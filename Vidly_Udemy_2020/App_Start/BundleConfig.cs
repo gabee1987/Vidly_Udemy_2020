@@ -23,7 +23,7 @@ namespace Vidly_Udemy_2020
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-paper.css",
                       "~/Content/site.css"));
         }
     }

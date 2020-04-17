@@ -4,20 +4,48 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Vidly_Udemy_2020.Models;
+using Vidly_Udemy_2020.ViewModels;
 
 namespace Vidly_Udemy_2020.Controllers
 {
     public class MoviesController : Controller
     {
-        // GET: Movies
+        // GET: Movies/Random
         public ActionResult Random()
         {
             var movie = new Movie() { Name = "Inception" };
-            return View( movie );
+            var customers = new List<Customer>
+            {
+                new Customer { Name = "Customer 1" },
+                new Customer { Name = "Customer 2" },
+            };
+
+            var viewModel = new RandomMovieViewModel
+            {
+                Movie     = movie,
+                Customers = customers
+            };
+
+            return View( viewModel );
+
+            // Dont use ViewData or ViewBag!!!
+            //ViewData["Movie"] = movie;
+            //ViewBag.Movie = movie;
+            //return View();
+
+            //var viewResult = new ViewResult();
+            //viewResult.ViewData.Model // <- ViewData is a special dictionary
+
+            //return View( movie ); // Without viewData
+
+
             //return Content( "Hello World!" );
             //return HttpNotFound();
             //return new EmptyResult();
             //return RedirectToAction( "Index", "Home", new { page = 1, sortBy = "name" } );
+
+
+
         }
 
         public ActionResult Edit( int id )

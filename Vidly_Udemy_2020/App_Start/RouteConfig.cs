@@ -13,6 +13,18 @@ namespace Vidly_Udemy_2020
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // The order matters in routing, you have to start from specific to generic
+            // This is an old way of custom routing and not advised
+            /*routes.MapRoute(
+                "MoviesByReleaseDate",
+                "movies/released/{year}/{month}",
+                new { controller = "Movies", action = "ByReleaseDate" },
+                new { year = @"\d{4}", month = @"\d{2}" }
+                /*new { year = @"2015|2016", month = @"\d{2}" } ); // Constraint the year
+             */
+            // Enable attribute routing
+            routes.MapMvcAttributeRoutes();
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
